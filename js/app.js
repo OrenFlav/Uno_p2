@@ -79,16 +79,16 @@ document.getElementById("replyForm").addEventListener("submit", function (e) {
   sendNote.textContent = "";
   sendNote.className  = "send-note";
 
-  // Sender is always Uno — no name field needed
+  // Sender is always Yzah — no name field needed
   emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-    from_name : "Uno",
+    from_name : "Yzah",
     message   : replyMessage,
     to_email  : "crissstmads@gmail.com",
     reply_to  : "noreply@confession.site",
   })
   .then(() => {
-    btnSend.textContent  = "Sent 🔥";
-    sendNote.textContent = "She replied! Check your Gmail, Chris 😭";
+    btnSend.textContent  = "Na send na😱";
+    sendNote.textContent = "Oh my nag reply nasad siya😭";
     sendNote.className   = "send-note success";
     launchConfetti();
 
@@ -98,7 +98,7 @@ document.getElementById("replyForm").addEventListener("submit", function (e) {
       btnSend.textContent = "Send it 🔥";
       sendNote.textContent = "";
       closeReplyModal();
-    }, 3200);
+    }, 60000);
   })
   .catch((err) => {
     console.error("EmailJS error:", err);
@@ -186,8 +186,6 @@ window.addEventListener("resize", () => {
 
 
 // ── SUBTLE MOODBOARD PARALLAX on mouse move ───────────────────
-// Moves the background memes very slightly as cursor moves
-// Gives a depth effect on desktop — ignored on touch devices
 document.addEventListener("mousemove", (e) => {
   const imgs = document.querySelectorAll(".mb-img");
   const cx   = window.innerWidth  / 2;
@@ -196,7 +194,6 @@ document.addEventListener("mousemove", (e) => {
   const dy   = (e.clientY - cy) / cy;   // -1 to 1
 
   imgs.forEach((img, i) => {
-    // Each image moves a slightly different amount for depth
     const depth = (i % 3 + 1) * 5;
     img.style.transform = img.style.transform.replace(/translate\([^)]*\)/g, "")
       + ` translate(${dx * depth}px, ${dy * depth}px)`;
